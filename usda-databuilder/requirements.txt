@@ -4,3 +4,8 @@ sodapy
 streamlit
 plotly
 streamlit-plotly-events
+numpy
+yfinance
+requests
+duckdb
+plotly.express
