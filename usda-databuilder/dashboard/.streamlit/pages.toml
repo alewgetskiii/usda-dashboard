@@ -1,0 +1,27 @@
+[[pages]]
+path = "app.py"
+name = "Home"
+
+[[pages]]
+path = "pages/Barge_Rates.py"
+name = "Barge Rates"
+
+[[pages]]
+path = "pages/CBOT_Delivery_Calc.py"
+name = "CBOT Delivery Calc."
+
+[[pages]]
+path = "pages/Spread_Matrix.py"
+name = "Spread Matrix"
+
+[[pages]]
+path = "pages/Exports.py"
+name = "Exports"
+
+[[pages]]
+path = "pages/BR_Prices.py"
+name = "BR Prices"
+
+[[pages]]
+path = "pages/WASDE_Table.py"
+name = "WASDE Table"

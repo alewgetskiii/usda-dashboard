@@ -1,0 +1,22 @@
+__pycache__/
+.pytest_cache/
+.venv/
+env/
+venv/
+
+# SQLite & backups
+data/*.db
+data/*.sqlite*
+data/*backup*
+data/*.bak
+
+# Regenerated Brazilian data
+BR/data_raw/**
+BR/data_intermediate/**
+!BR/data_raw/.gitignore
+!BR/data_raw/.gitkeep
+!BR/data_intermediate/.gitignore
+!BR/data_intermediate/.gitkeep
+
+*.pyc
+.DS_Store

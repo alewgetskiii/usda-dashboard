@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="usda.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="4879"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="dim_transport_location" custom_title="0" dock_id="2" table="4,22:maindim_transport_location"/><dock_state state="000000ff00000000fd000000010000000200000536000003e1fc0100000002fb000000160064006f0063006b00420072006f00770073006500310100000000000005360000000000000000fb000000160064006f0063006b00420072006f00770073006500320100000000000005360000010100ffffff000002d10000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="dim_agg_level" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="91"/><column index="2" value="110"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="dim_reference_period" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="141"/><column index="2" value="159"/><column index="3" value="116"/><column index="5" value="112"/><column index="6" value="81"/><column index="7" value="45"/></column_widths><filter_values><column index="1" value="YEAR"/></filter_values><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="dim_transport_location" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="149"/><column index="2" value="104"/><column index="3" value="92"/><column index="4" value="45"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">        SELECT
+            st.state_alpha,
+            st.state_name,
+            MAX(f.value) AS value
+        FROM fact_ag_stats f
+        JOIN dim_commodity c      ON f.commodity_id = c.commodity_id
+        JOIN dim_statistic s      ON f.statistic_id = s.statistic_id
+        JOIN dim_state st         ON f.state_id = st.state_id
+        JOIN dim_reference_period r ON f.reference_period_id = r.reference_period_id
+        JOIN dim_agg_level a      ON f.agg_level_id = a.agg_level_id
+        WHERE c.commodity_name = 'CORN'
+          AND s.statistic_name = '
+          AND f.year = '2025'
+          AND r.period_category = 'YEAR'
+          AND a.agg_level_desc = 'STATE'
+          AND (f.domain_desc = 'TOTAL' OR f.domain_desc IS NULL)
+        GROUP BY st.state_alpha, st.state_name
+        ORDER BY st.state_name</sql><current_tab id="0"/></tab_sql></sqlb_project>

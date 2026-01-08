@@ -1,0 +1,6 @@
+pandas
+requests
+sodapy
+streamlit
+plotly
+streamlit-plotly-events
