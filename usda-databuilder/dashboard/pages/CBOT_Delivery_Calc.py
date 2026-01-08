@@ -15,6 +15,8 @@ RATES_PATH = PROJECT_ROOT / "data" / "rates.csv"
 
 
 def get_connection():
+    if not DB_PATH.exists():
+        raise FileNotFoundError(f"DB not found: {DB_PATH}")
     return sqlite3.connect(DB_PATH)
 
 
@@ -127,6 +129,10 @@ def build_table(
 
 st.set_page_config(page_title="Barge Delivery Calculator", layout="wide")
 st.title("CBOT Delivery Calculations")
+
+if not DB_PATH.exists():
+    st.error(f"Database missing: {DB_PATH}. Upload it or run the ETL to generate it.")
+    st.stop()
 
 locations = get_locations()
 if not locations:
